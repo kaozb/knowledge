@@ -1,0 +1,105 @@
+<footer class="md-footer">
+    <!--今日诗词-->
+
+
+    <!-- Link to previous and/or next page -->
+    {% if "navigation.footer" in features %}
+    {% if page.previous_page or page.next_page %}
+    {% if page.meta and page.meta.hide %}
+    {% set hidden = "hidden" if "footer" in page.meta.hide %}
+    {% endif %}
+    <nav
+            class="md-footer__inner md-grid"
+            aria-label="{{ lang.t('footer') }}"
+            {{ hidden }}
+    >
+
+        <!-- Link to previous page -->
+        {% if page.previous_page %}
+        {% set direction = lang.t("footer.previous") %}
+        <a
+                href="{{ page.previous_page.url | url }}"
+                class="md-footer__link md-footer__link--prev"
+                aria-label="{{ direction }}: {{ page.previous_page.title | e }}"
+        >
+            <div class="md-footer__button md-icon">
+                {% set icon = config.theme.icon.previous or "material/arrow-left" %}
+                {% include ".icons/" ~ icon ~ ".svg" %}
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                {{ direction }}
+              </span>
+                <div class="md-ellipsis">
+                    {{ page.previous_page.title }}
+                </div>
+            </div>
+        </a>
+        {% endif %}
+
+        <!-- Link to next page -->
+        {% if page.next_page %}
+        {% set direction = lang.t("footer.next") %}
+        <a
+                href="{{ page.next_page.url | url }}"
+                class="md-footer__link md-footer__link--next"
+                aria-label="{{ direction }}: {{ page.next_page.title | e }}"
+        >
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                {{ direction }}
+              </span>
+                <div class="md-ellipsis">
+                    {{ page.next_page.title }}
+                </div>
+            </div>
+            <div class="md-footer__button md-icon">
+                {% set icon = config.theme.icon.next or "material/arrow-right" %}
+                {% include ".icons/" ~ icon ~ ".svg" %}
+            </div>
+        </a>
+        {% endif %}
+    </nav>
+    {% endif %}
+    {% endif %}
+
+    <!-- Further information -->
+    <div class="md-footer-meta md-typeset">
+        <div class="md-footer-meta__inner md-grid">
+            {% include "partials/copyright.html" %}
+
+            <!-- Social links -->
+            {% if config.extra.social %}
+            {% include "partials/social.html" %}
+            {% endif %}
+        </div>
+    </div>
+</footer>
+
+
+
+<script>
+    !function () {
+    var xhr = new XMLHttpRequest();
+
+    xhr.open('GET', 'https://just_one_word.hoao.fun/?c=f&encode=json', true);
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var response = JSON.parse(xhr.responseText);
+            var key1111Value = response['hitokoto'];
+
+            document.getElementById('jinrishici-sentence').innerText = key1111Value;
+            // 找到所有具有类名为 `md-source__repository` 的 DIV 元素
+            // var repositoryDivs = document.querySelectorAll('.md-source__repository');
+
+
+            // repositoryDivs.forEach(function (div) {
+            //     div.textContent = key1111Value; // 将内容更改为您需要的新内容
+            // });
+        }
+    };
+
+    xhr.send();
+}(window);
+</script>

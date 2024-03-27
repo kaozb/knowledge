@@ -1,0 +1,49 @@
+
+<!--
+<div id="Comments" class="artalk"></div>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/artalk/2.7.3/Artalk.css" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/artalk/2.7.3/Artalk.js"></script>
+
+
+<script>
+Artalk.init({
+  el:        '#Comments',
+    pageKey:   '',
+	darkMode: 'auto',
+  pageTitle: '',
+  server:    'https://g.hoao.fun/',
+  site:      'opts',
+})
+// 获取所有带有类名为 "atk-list-footer" 的元素
+var atkListFooterElements = document.getElementsByClassName("atk-list-footer");
+
+// 遍历每个匹配的元素
+for (var i = 0; i < atkListFooterElements.length; i++) {
+    var element = atkListFooterElements[i];
+
+    // 删除该元素的所有子元素
+element.parentNode.removeChild(element);
+}
+
+</script>
+-->
+
+<!--
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<div id="gitalk-container"></div>
+<script>
+const gitalk = new Gitalk({
+  clientID: '8a73efa4ff434f96ef97',
+  clientSecret: 'af2945b7ceee22a88aee3d2fdd438f3ab78b10e0',
+  repo: 'knowledge',      // The repository of store comments,
+  owner: 'kaozb',
+  admin: ['kaozb'],
+  proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token'
+})
+
+gitalk.render('gitalk-container')
+</script>
+-->
